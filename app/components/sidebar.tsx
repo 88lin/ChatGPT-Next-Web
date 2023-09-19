@@ -130,8 +130,8 @@ function useDragSideBar() {
 export function SideBar(props: { className?: string }) {
   const chatStore = useChatStore();
 
-  // drag side bar
-  const { onDragStart, shouldNarrow } = useDragSideBar();
+  // drag side bar 
+  const { onDragMouseDown, shouldNarrow } = useDragSideBar();
   const navigate = useNavigate();
   const config = useAppConfig();
 
