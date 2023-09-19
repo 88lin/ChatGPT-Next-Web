@@ -148,7 +148,7 @@ export function SideBar(props: { className?: string }) {
           故人的AI助理-公益版
         </div>
         <div className={styles["sidebar-sub-title"]}>
-          每人每天￥0.5就能运营下去<a href="https://520.txsb.gq/fireworks/1.html" target="_blank" rel="noopener noreferrer">
+          每人每天￥0.5就能运营下去<a href="https://88lin.github.io/fireworks/1.html" target="_blank" rel="noopener noreferrer">
             <span className={styles["sidebar-sub-title-gradient"]}>欢迎捐赠</span>
           </a>
         </div>
