@@ -312,7 +312,7 @@ const cn = {
     BotHello: `1、如果每一个访问这个页面的人，每天能捐赠￥0.5，那么我们这个免费网站就能持续做下去。否则我们将很快没法维持运营，如果你想持续享受这种普惠式的几乎免费的服务，请根据你的用量向我捐赠0.5~2元，谢谢！如果这个网站真的帮到了你的话，或者你确实使用量比较大（比如重复提问/上下文屡次超过限制），希望你能捐赠 ￥1  即便你每天都捐赠 ￥1 ，其实也比你购买很多镜像站的会员划算了。[点此捐赠](https://520.txsb.gq/fireworks/1.html)
                2、ChatGPT会根据语境和上下文理解用户意图，在当前会话里，它记得您之前说过的话。          
                3、OpenAI的限制：上下文词数+AI返回内容词数 token<32000（上下文+本次生成的内容总长度小于32000个token）你可以新建一个窗口提问，或者精简你的问题。
-               4、我的免费ChatGPT站偶尔会崩，请大家谅解,毕竟个人经费和精力有限。 [个人博客](https://88lin.eu.org) | [学术优化](https://study.gptnb.xyz/) | [论文工具](https://laorange.gitee.io/paper-assistant/) | [AI维权律师](http://lawyer.88lin.eu.org/) | [AI知识库](https://ssw9noe1h6.feishu.cn/wiki/wikcn59pPXfAiF1ONajdPzvhA9d)`,
+               4、我的免费ChatGPT站偶尔会崩，请大家谅解,毕竟个人经费和精力有限。 [个人博客](https://88lin.eu.org) | [学术优化](https://study.gptnb.xyz/) | [论文工具](https://laorange.gitee.io/paper-assistant/) | [AI维权律师](http://lawyer.88lin.eu.org/) | [ChatGPT 引导语](https://prompts.fresns.cn/)`,
     Error: "出错了，稍后重试吧",
     Prompt: {
       History: (content: string) => "这是历史聊天总结作为前情提要：" + content,
