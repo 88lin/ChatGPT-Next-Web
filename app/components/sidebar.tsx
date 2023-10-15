@@ -145,12 +145,9 @@ export function SideBar(props: { className?: string }) {
     >
       <div className={styles["sidebar-header"]} data-tauri-drag-region>
         <div className={styles["sidebar-title"]} data-tauri-drag-region>
-          故人的AI助理-公益版
+          故人的AI助理
         </div>
         <div className={styles["sidebar-sub-title"]}>
-          每人每天￥0.5就能运营下去<a href="https://88lin.github.io/fireworks/1.html" target="_blank" rel="noopener noreferrer">
-            <span className={styles["sidebar-sub-title-gradient"]}>欢迎捐赠</span>
-          </a>
         </div>
         <div className={styles["sidebar-logo"] + " no-dark"}>
           <ChatGptIcon />
@@ -239,4 +236,4 @@ export function SideBar(props: { className?: string }) {
       </div>
     </div>
   );
-}
+          }
