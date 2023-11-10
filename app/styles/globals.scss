@@ -357,6 +357,10 @@ pre {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.copyable {
+  user-select: text;
+}
 .home_sidebar-title__d8_c_ {
   background: linear-gradient(to right, #EB3C70,#51C4D3,#EE2746, #FF6F91,#EB507E
 );
