@@ -6,6 +6,7 @@ import { getClientConfig } from "./config/client";
 import { type Metadata } from "next";
 
 export const metadata: Metadata = {
+  title: "小林的AI助理",
   title: "故人的AI助理",
   description: "Your personal ChatGPT Chat Bot.",
   viewport: {
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     { media: "(prefers-color-scheme: dark)", color: "#151515" },
   ],
   appleWebApp: {
-    title: "故人的AI助理",
+    title: "小林的AI助理",
     statusBarStyle: "default",
   },
 };
