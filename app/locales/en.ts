@@ -107,6 +107,7 @@ const en: LocaleType = {
       copyLastMessage: "Copy Last Reply",
       copyLastCode: "Copy Last Code Block",
       showShortcutKey: "Show Shortcuts",
+      clearContext: "Clear Context",
     },
   },
   Export: {
@@ -446,6 +447,39 @@ const en: LocaleType = {
           SubTitle: "Example: ",
         },
       },
+      DeepSeek: {
+        ApiKey: {
+          Title: "DeepSeek API Key",
+          SubTitle: "Use a custom DeepSeek API Key",
+          Placeholder: "DeepSeek API Key",
+        },
+        Endpoint: {
+          Title: "Endpoint Address",
+          SubTitle: "Example: ",
+        },
+      },
+      XAI: {
+        ApiKey: {
+          Title: "XAI API Key",
+          SubTitle: "Use a custom XAI API Key",
+          Placeholder: "XAI API Key",
+        },
+        Endpoint: {
+          Title: "Endpoint Address",
+          SubTitle: "Example: ",
+        },
+      },
+      ChatGLM: {
+        ApiKey: {
+          Title: "ChatGLM API Key",
+          SubTitle: "Use a custom ChatGLM API Key",
+          Placeholder: "ChatGLM API Key",
+        },
+        Endpoint: {
+          Title: "Endpoint Address",
+          SubTitle: "Example: ",
+        },
+      },
       Stability: {
         ApiKey: {
           Title: "Stability API Key",
@@ -547,6 +581,39 @@ const en: LocaleType = {
         SubTitle: "The speed of the generated audio",
       },
       Engine: "TTS Engine",
+    },
+    Realtime: {
+      Enable: {
+        Title: "Realtime Chat",
+        SubTitle: "Enable realtime chat feature",
+      },
+      Provider: {
+        Title: "Model Provider",
+        SubTitle: "Switch between different providers",
+      },
+      Model: {
+        Title: "Model",
+        SubTitle: "Select a model",
+      },
+      ApiKey: {
+        Title: "API Key",
+        SubTitle: "API Key",
+        Placeholder: "API Key",
+      },
+      Azure: {
+        Endpoint: {
+          Title: "Endpoint",
+          SubTitle: "Endpoint",
+        },
+        Deployment: {
+          Title: "Deployment Name",
+          SubTitle: "Deployment Name",
+        },
+      },
+      Temperature: {
+        Title: "Randomness (temperature)",
+        SubTitle: "Higher values result in more random responses",
+      },
     },
   },
   Store: {

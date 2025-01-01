@@ -59,6 +59,7 @@ import {
   ByteDance,
   Alibaba,
   Moonshot,
+  XAI,
   Google,
   GoogleSafetySettingsThreshold,
   OPENAI_BASE_URL,
@@ -71,6 +72,8 @@ import {
   Stability,
   Iflytek,
   SAAS_CHAT_URL,
+  ChatGLM,
+  DeepSeek,
 } from "../constant";
 import { Prompt, SearchService, usePromptStore } from "../store/prompt";
 import { ErrorBoundary } from "./error";
@@ -83,6 +86,7 @@ import { nanoid } from "nanoid";
 import { useMaskStore } from "../store/mask";
 import { ProviderType } from "../utils/cloud";
 import { TTSConfigList } from "./tts-config";
+import { RealtimeConfigList } from "./realtime-chat/realtime-config";
 
 function EditPromptModal(props: { id: string; onClose: () => void }) {
   const promptStore = usePromptStore();
@@ -1194,6 +1198,127 @@ export function Settings() {
     </>
   );
 
+  const deepseekConfigComponent = accessStore.provider ===
+    ServiceProvider.DeepSeek && (
+    <>
+      <ListItem
+        title={Locale.Settings.Access.DeepSeek.Endpoint.Title}
+        subTitle={
+          Locale.Settings.Access.DeepSeek.Endpoint.SubTitle +
+          DeepSeek.ExampleEndpoint
+        }
+      >
+        <input
+          aria-label={Locale.Settings.Access.DeepSeek.Endpoint.Title}
+          type="text"
+          value={accessStore.deepseekUrl}
+          placeholder={DeepSeek.ExampleEndpoint}
+          onChange={(e) =>
+            accessStore.update(
+              (access) => (access.deepseekUrl = e.currentTarget.value),
+            )
+          }
+        ></input>
+      </ListItem>
+      <ListItem
+        title={Locale.Settings.Access.DeepSeek.ApiKey.Title}
+        subTitle={Locale.Settings.Access.DeepSeek.ApiKey.SubTitle}
+      >
+        <PasswordInput
+          aria-label={Locale.Settings.Access.DeepSeek.ApiKey.Title}
+          value={accessStore.deepseekApiKey}
+          type="text"
+          placeholder={Locale.Settings.Access.DeepSeek.ApiKey.Placeholder}
+          onChange={(e) => {
+            accessStore.update(
+              (access) => (access.deepseekApiKey = e.currentTarget.value),
+            );
+          }}
+        />
+      </ListItem>
+    </>
+  );
+
+  const XAIConfigComponent = accessStore.provider === ServiceProvider.XAI && (
+    <>
+      <ListItem
+        title={Locale.Settings.Access.XAI.Endpoint.Title}
+        subTitle={
+          Locale.Settings.Access.XAI.Endpoint.SubTitle + XAI.ExampleEndpoint
+        }
+      >
+        <input
+          aria-label={Locale.Settings.Access.XAI.Endpoint.Title}
+          type="text"
+          value={accessStore.xaiUrl}
+          placeholder={XAI.ExampleEndpoint}
+          onChange={(e) =>
+            accessStore.update(
+              (access) => (access.xaiUrl = e.currentTarget.value),
+            )
+          }
+        ></input>
+      </ListItem>
+      <ListItem
+        title={Locale.Settings.Access.XAI.ApiKey.Title}
+        subTitle={Locale.Settings.Access.XAI.ApiKey.SubTitle}
+      >
+        <PasswordInput
+          aria-label={Locale.Settings.Access.XAI.ApiKey.Title}
+          value={accessStore.xaiApiKey}
+          type="text"
+          placeholder={Locale.Settings.Access.XAI.ApiKey.Placeholder}
+          onChange={(e) => {
+            accessStore.update(
+              (access) => (access.xaiApiKey = e.currentTarget.value),
+            );
+          }}
+        />
+      </ListItem>
+    </>
+  );
+
+  const chatglmConfigComponent = accessStore.provider ===
+    ServiceProvider.ChatGLM && (
+    <>
+      <ListItem
+        title={Locale.Settings.Access.ChatGLM.Endpoint.Title}
+        subTitle={
+          Locale.Settings.Access.ChatGLM.Endpoint.SubTitle +
+          ChatGLM.ExampleEndpoint
+        }
+      >
+        <input
+          aria-label={Locale.Settings.Access.ChatGLM.Endpoint.Title}
+          type="text"
+          value={accessStore.chatglmUrl}
+          placeholder={ChatGLM.ExampleEndpoint}
+          onChange={(e) =>
+            accessStore.update(
+              (access) => (access.chatglmUrl = e.currentTarget.value),
+            )
+          }
+        ></input>
+      </ListItem>
+      <ListItem
+        title={Locale.Settings.Access.ChatGLM.ApiKey.Title}
+        subTitle={Locale.Settings.Access.ChatGLM.ApiKey.SubTitle}
+      >
+        <PasswordInput
+          aria-label={Locale.Settings.Access.ChatGLM.ApiKey.Title}
+          value={accessStore.chatglmApiKey}
+          type="text"
+          placeholder={Locale.Settings.Access.ChatGLM.ApiKey.Placeholder}
+          onChange={(e) => {
+            accessStore.update(
+              (access) => (access.chatglmApiKey = e.currentTarget.value),
+            );
+          }}
+        />
+      </ListItem>
+    </>
+  );
+
   const stabilityConfigComponent = accessStore.provider ===
     ServiceProvider.Stability && (
     <>
@@ -1650,8 +1775,11 @@ export function Settings() {
                   {alibabaConfigComponent}
                   {tencentConfigComponent}
                   {moonshotConfigComponent}
+                  {deepseekConfigComponent}
                   {stabilityConfigComponent}
                   {lflytekConfigComponent}
+                  {XAIConfigComponent}
+                  {chatglmConfigComponent}
                 </>
               )}
             </>
@@ -1686,9 +1814,11 @@ export function Settings() {
           <ListItem
             title={Locale.Settings.Access.CustomModel.Title}
             subTitle={Locale.Settings.Access.CustomModel.SubTitle}
+            vertical={true}
           >
             <input
               aria-label={Locale.Settings.Access.CustomModel.Title}
+              style={{ width: "100%", maxWidth: "unset", textAlign: "left" }}
               type="text"
               value={config.customModels}
               placeholder="model1,model2,model3"
@@ -1715,7 +1845,18 @@ export function Settings() {
         {shouldShowPromptModal && (
           <UserPromptModal onClose={() => setShowPromptModal(false)} />
         )}
-
+        <List>
+          <RealtimeConfigList
+            realtimeConfig={config.realtimeConfig}
+            updateConfig={(updater) => {
+              const realtimeConfig = { ...config.realtimeConfig };
+              updater(realtimeConfig);
+              config.update(
+                (config) => (config.realtimeConfig = realtimeConfig),
+              );
+            }}
+          />
+        </List>
         <List>
           <TTSConfigList
             ttsConfig={config.ttsConfig}
